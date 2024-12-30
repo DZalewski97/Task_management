@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #CCCCCC;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h1>Registration</h1>
+</center>
+
+<form action='/people/registration/submit' method='post'>
+    {% csrf_token %}
+    <center>
+        <label for="login">Login:</label>
+        <input type="text" id="login" name="login" required>
+    </center>
+
+    <br><br>
+    <center>
+        <label for="password">Hasło:</label>
+        <input type="password" id="password" name="password" required>
+    </center>
+    <br><br>
+    <center>
+        <button type='submit'>Registration</button>
+    </center>
+</form>
+
+</body>
+</html>

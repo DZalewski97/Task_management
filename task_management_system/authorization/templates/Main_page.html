@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+    <style>
+        body {
+            background-color: #000000; /* Czarny kolor tła */
+            color: #CCCCCC; /* Biały kolor tekstu */
+        }
+    </style>
+</head>
+<body>
+{% if common_user.is_admin %}
+<h3>All Employer</h3>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Password</th>
+        <th>Task</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for person in all_people %}
+    <tr>
+        <td>
+            <input type="hidden" name="name" value='{{person.name}}'>
+            <span>{{person.name}}</span>
+
+        </td>
+        <td>
+            <input type="hidden" name="password" value='{{person.password}}'/>
+            <span>{{person.password}}</span>
+        </td>
+        <td>
+            <input type="hidden" name="task" value='{{person.task}}'/>
+            <span>{{person.task}}</span>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h3>My profil</h3>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Password</th>
+        <th>Task</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            <input type="hidden" name="name" value='{{common_user.name}}'>
+            <span>{{common_user.name}}</span>
+
+        </td>
+        <td>
+            <input type="hidden" name="password" value='{{common_user.password}}'/>
+            <span>{{common_user.password}}</span>
+        </td>
+        <td>
+            <input type="hidden" name="task" value='{{common_user.task}}'/>
+            <span>{{common_user.task}}</span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+{% endif %}
+</body>
+</html>
